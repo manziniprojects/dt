@@ -7,6 +7,7 @@ export function App() {
     <>
       <Header></Header>
       <Dashboard></Dashboard>
+     
       <GlobalStyle></GlobalStyle>
     </>
   );
