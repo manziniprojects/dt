@@ -22,12 +22,18 @@ export function App() {
 
   return (
     <>
-      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}></Header>
-      <Dashboard></Dashboard>
-      
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}></Header>{/*Para fazer o modal abrir*/}
+    
+      <NewTransactionModal
+        isOpen={isNewTransactionModalOpen}
+        onRequestClose={handleCloseNewTransactionModal}
+
+
+      />
 
 
       <GlobalStyle></GlobalStyle>
+      <Dashboard></Dashboard>
     </>
   );
 }
