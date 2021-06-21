@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import styled, { isStyledComponent } from 'styled-components'
+import { darken } from 'polished'
 
-export const Container = styled.form `
+
+export const Container = styled.form`
 
 h2{
     color: var(--text);
@@ -49,3 +51,79 @@ button[type='submit']{
 
 
 `;
+
+
+export const TransactionTypeContainer = styled.div`
+    margin: 1rem 0;
+    display: grid; /* dividir em colunas   */
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+
+    /*button{ foi colocado no RadioBox
+        height: 4rem;
+        border: 1px solid #d7d7d7;
+        border-radius: 0.25rem;
+        background: transparent;
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        transition: border-color 0,2s;
+
+        img{
+            width: 20px;
+            height: 20px;
+        }
+
+        &:hover{
+            border-color: ${darken(0.1, '#d7d7d7')};
+        }
+
+        span{
+            display: inline-block;
+            margin-left: 1rem;
+            font-size: 1rem;
+            color: var(--text-title);
+        }
+    }*/
+
+`;
+
+interface RadioBoxProps{
+    isActive:boolean;//cria propriedade
+}
+
+    export const RadioBox = styled.button<RadioBoxProps>`  //passa a propriedade
+        height: 4rem;
+        border: 1px solid #d7d7d7;
+        border-radius: 0.25rem;
+
+        background: ${(props)=>props.isActive ? '#ccc' : 'transparent'};
+        //se a propriedade for ativa passa uma cor senao transparente
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        transition: border-color 0,2s;
+
+        img{
+            width: 20px;
+            height: 20px;
+        }
+
+        &:hover{
+            border-color: ${darken(0.1, '#d7d7d7')};
+        }
+
+        span{
+            display: inline-block;
+            margin-left: 1rem;
+            font-size: 1rem;
+            color: var(--text-title);
+        }
+
+
+` ;
