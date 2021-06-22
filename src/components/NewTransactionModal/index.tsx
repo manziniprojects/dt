@@ -1,9 +1,10 @@
 import Modal from 'react-modal'
-import { Container, TransactionTypeContainer, RadioBox} from './styles'
+import { Container, TransactionTypeContainer, RadioBox } from './styles'
 import closeImg from '../../assets/close.svg'
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+
 interface NewTransactionModalProps {
     isOpen: boolean
     onRequestClose: () => void
@@ -12,6 +13,11 @@ interface NewTransactionModalProps {
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
     //ao armazenar informacao através do input do usuario, usar um estado
     const [type, setType] = useState('deposit')
+
+    function handleCreateNewTransaction(event: FormEvent) {
+        event.preventDefault();
+
+    }
 
 
     return (
@@ -29,8 +35,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
                 <img src={closeImg} alt="Fechar" />
             </button>
 
-            <Container>
-                <h2>Cadastrar transação</h2>
+            <Container onSubmit={handleCreateNewTransaction}>
+                <h2>Cadastrar transação2</h2>
                 <input
                     placeholder='Título'
                 />
@@ -45,18 +51,22 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
                 <TransactionTypeContainer>
 
                     <RadioBox type="button"
-                    onClick={()=>{setType('deposit')}}   
-                    isActive={type==='deposit'}
-                    
+                        onClick={() => { setType('deposit') }}
+                        isActive={type === 'deposit'}
+                        activeColor='green'
+
+
                     >
-                    
+
                         <img src={incomeImg} alt="Entrada" />
                         <span>Entrada</span>
                     </RadioBox>
 
-                    <RadioBox type="button" 
-                    onClick={()=>{setType('retirada')}}
-                    isActive={type==='retirada'}
+                    <RadioBox type="button"
+                        onClick={() => { setType('retirada') }}
+                        isActive={type === 'retirada'}
+                        activeColor='red'
+
                     >
                         <img src={outcomeImg} alt="Saída" />
                         <span>Saída</span>
