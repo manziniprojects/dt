@@ -1,27 +1,16 @@
 
 import { api } from '../../services/api'
 import { Container } from './styles'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { TransactionsContext } from '../../transactionsContext'
 
-//formato da informacao dentro do estado
-interface Transaction {
-    id: number;
-    title: string;
-    amount: number;
-    type: string;
-    category: string;
-    createdAt: string;
-}
+
 
 export function TransactionTable() {
 
-    const [transactions, setTransactions] = useState<Transaction[]>([])
-    //o estado armazena um array de Transaction
+    const transactions = useContext(TransactionsContext)
 
-    useEffect(() => {
-        api.get('/transactions')
-            .then(response => setTransactions(response.data.transactions))//salvando os dados no estado
-    }, [])
+   
 
     return (
 
@@ -43,11 +32,13 @@ export function TransactionTable() {
                         return (
                             <tr key={transaction.id}>
                                 <td>{transaction.title}</td>
+
                                 <td className={transaction.type}>
                                     {new Intl.NumberFormat('pt-BR', {
                                         style: 'currency',
                                         currency: 'BRL'
                                     }).format(transaction.amount)}</td>
+
                                 <td>{transaction.type}</td>
                                 <td>{new Intl.DateTimeFormat('pt-BR').format(
                                     new Date(transaction.createdAt))}</td>
