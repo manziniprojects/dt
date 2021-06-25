@@ -30,7 +30,16 @@ createServer({
          category: 'dev',
          amount: '4000',
          createdAt: new Date('2021-08-09 09:00:00')
-        }
+        },
+
+        {
+          id: 3,
+           title: 'Fone',
+           type:'retirada',
+           category: 'Shop',
+           amount: '150',
+           createdAt: new Date('2021-05-23 10:00:00')
+          }
       ] 
     })
   },
