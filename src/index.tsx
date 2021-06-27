@@ -11,36 +11,28 @@ createServer({
   },
 
   //iniciar o bd com alguma info
-  seeds(server){
+  seeds(server) {
     server.db.loadData({
-      transactions:[ //transactions nome da tabela, no plural
+      transactions: [ //transactions nome da tabela, no plural
         {
-          id: 1,
-         title: 'Freelancer',
-         type:'deposito',
-         category: 'dev',
-         amount: '6000',
-         createdAt: new Date('2021-02-02 09:00:00')
-        },
 
-        {
-        id: 2,
-         title: 'Casa',
-         type:'retirada',
-         category: 'dev',
-         amount: '4000',
-         createdAt: new Date('2021-08-09 09:00:00')
+          title: 'Revisão',
+          amount: Number('900'),
+          type: 'retirada',
+          category: 'carro',
+          createdAt: new Date()
+        
         },
-
         {
-          id: 3,
-           title: 'Fone',
-           type:'retirada',
-           category: 'Shop',
-           amount: '150',
-           createdAt: new Date('2021-05-23 10:00:00')
-          }
-      ] 
+
+          title: 'Salário',
+          amount: Number('4200'),
+          type: 'deposit',
+          category: 'Job',
+          createdAt: new Date()
+        
+        }
+      ]
     })
   },
 

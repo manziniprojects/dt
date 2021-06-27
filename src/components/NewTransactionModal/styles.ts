@@ -1,4 +1,4 @@
-import styled, { isStyledComponent } from 'styled-components'
+import styled from 'styled-components'
 import { darken, transparentize } from 'polished'
 
 
